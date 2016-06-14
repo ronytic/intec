@@ -8,7 +8,7 @@ if (!empty($_POST)) {
 	extract($_POST);
 	$nivel=$nivel?" nivel='$nivel' ":" nivel LIKE '%' ";
 	$usu=${$narchivo}->mostrarTodo("nombre LIKE '%$nombre%' and paterno LIKE '%$paterno%' and materno LIKE '%$materno%' and nivel!=1 and $nivel");
-	$titulo=array("usuario"=>"Usuario","nombre"=>"Nombre","paterno"=>"Paterno","materno"=>"Materno","nivel"=>"Nivel");
+	$titulo=array("usuario"=>"Usuario","nombre"=>"Nombre","paterno"=>"Paterno","materno"=>"Materno","nivel"=>"Nivel de Usuario");
     $datos=array();
     foreach($usu as $d){$i++;
         $datos[$i]['codusuarios']=$d['codusuarios'];
