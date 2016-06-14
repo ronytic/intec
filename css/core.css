@@ -293,7 +293,7 @@ width: auto;
 .sinover{
 	overflow-x: hidden !important;
 }
-input[type=text],input.texto,textarea,select,option,input[type=password],input[type=date],input[type=search],input[type=number]{
+input[type=text],input.texto,textarea,select,option,input[type=password],input[type=date],input[type=search],input[type=number],input[type=time]{
 	border:#F0F0F0 1px solid;
 	border-bottom:#6fa559 1px solid;
 	padding:8px;
