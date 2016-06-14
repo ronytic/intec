@@ -3,50 +3,61 @@ include_once '../../login/check.php';
 if (!empty($_POST)) {
 	$folder="../../";
 	include_once '../../class/alumno.php';
-	include_once '../../class/curso.php';
-	include_once '../../class/rude.php';
+	include_once '../../class/carrera.php';
+	include_once '../../class/grupo.php';
 	include_once '../../class/asistencia.php';
 	extract($_POST);
 	
 	$alumno=new alumno;
-	$curso=new curso;
-	$rude=new rude;
+	$carrera=new carrera;
+    $grupo=new grupo;
 	$asistencia=new asistencia;
-	if($codcurso==""){
-		echo "Seleccione un Curso Porfavor";	
+	if($codcarrera==""){
+		echo "Seleccione una Carrera Porfavor";	
 		exit();
 	}
+    if($codgrupo==""){
+		echo "Seleccione un Grupo de Estudio Porfavor";	
+		exit();
+	}
+	$gru=array_shift($grupo->mostrar($codgrupo));
+	$car=array_shift($carrera->mostrar($codcarrera));
+        
+	$codgrupo=$codgrupo?"codgrupo='$codgrupo'":"codgrupo LIKE '%'";
 	
-	$codcurso=$codcurso?"codcurso='$codcurso'":"codcurso LIKE '%'";
-	$sexo=$sexo!=""?"sexo='$sexo'":"sexo LIKE '%'";
-	$asis=$asistencia->mostrarTodo("$codcurso and fechaasistencia='$fechaasistencia'");
+    
+    $sexo=$sexo!=""?"sexo='$sexo'":"sexo LIKE '%'";
+	$asis=$asistencia->mostrarTodo("$codgrupo and fechaasistencia='$fechaasistencia'");
+    
+    ?>
+    <span class="resaltar">Carrera:</span> <?php echo $car['nombre']?> <span class="resaltar">Grupo:</span> <?php echo $gru['nombregrupo']?> <span class="resaltar">Horario:</span> <?php echo $gru['horainicio']?> - <?php echo $gru['horafinal']?> <span class="resaltar">Fecha de Asistencia:</span> <?php echo fecha2Str($fechaasistencia)?><br>
+    <?php
 	if(count($asis)){
-		echo "Asistencia ya se encuentra Registrada para esta fecha ".fecha2Str($fechaasistencia)." y el curso seleccionado";
-		?><br><a href="ver.php?codcurso=<?php echo $_POST['codcurso'];?>&fechaasistencia=<?php echo $fechaasistencia?>" target="_blank" class="botoninfo">Ver Reporte</a><?php
+        ?>
+		<div class="rojoC">La Asistencia ya se encuentra Registrada para esta fecha</div>
+        <br><a href="ver.php?codcarrera=<?php echo $_POST['codcarrera'];?>&codgrupo=<?php echo $_POST['codgrupo'];?>&fechaasistencia=<?php echo $fechaasistencia?>" target="_blank" class="botoninfo">Ver Reporte</a><?php
 		
 	}else{
-	$al=$alumno->mostrarTodo("$codcurso","paterno,materno,nombres,codcurso");
+	$al=$alumno->mostrarTodo("$codgrupo","paterno,materno,nombres,codgrupo");
 	$i=0;
 	foreach($al as $a){$i++;
-		$cur=array_shift($curso->mostrar($a['codcurso']));
-		$r=$rude->mostrarTodo("codalumno=".$a['codalumno']);
+		
 		$d[$i]['codalumno']=$a['codalumno'];
 		$d[$i]['paterno']=capitalizar($a['paterno']);
 		$d[$i]['materno']=capitalizar($a['materno']);
 		$d[$i]['nombres']=capitalizar($a['nombres']);
 		$d[$i]['curso']=$cur['nombre'];
-		$d[$i]['sexo']=$a['sexo']?'Masculino':'Femenino';
-		$d[$i]['rude']=$a['rude'];
-		$d[$i]['telefonocasa']=$a['telefonocasa'];
-		$d[$i]['celular']=$a['celular'];
+
+
 		$d[$i]['falta']='<input type="hidden" name="n['.$i.'][codalumno]" value="'.$a['codalumno'].'"><center><input type="radio" name="n['.$i.'][v]" value="falta" required align="middle"></center>';
 		$d[$i]['asistencia']='<center><input type="radio" name="n['.$i.'][v]" value="asistencia" required></center>';
 		$d[$i]['licencia']='<center><input type="radio" name="n['.$i.'][v]" value="licencia" required></center>';
 	}
-	$titulo=array("paterno"=>"Paterno","materno"=>"Materno","nombres"=>"Nombres","sexo"=>"Sexo","curso"=>"Curso","asistencia"=>"Asistencia","falta"=>"Falta","licencia"=>"Licencia");
+	$titulo=array("paterno"=>"Paterno","materno"=>"Materno","nombres"=>"Nombres","asistencia"=>"Asistencia","falta"=>"Falta","licencia"=>"Licencia");
 	?>
     <form action="guardar.php" method="post">
-    <input type="hidden" name="codcurso" value="<?php echo $_POST['codcurso'];?>">
+    <input type="hidden" name="codcarrera" value="<?php echo $_POST['codcarrera'];?>">
+    <input type="hidden" name="codgrupo" value="<?php echo $_POST['codgrupo'];?>">
     <input type="hidden" name="fechaasistencia" value="<?php echo $_POST['fechaasistencia'];?>">
     <?php
 	listadoTablaregistro($titulo,$d,0,$modi,$elimi,$ver);
