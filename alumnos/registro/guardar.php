@@ -3,6 +3,8 @@ include_once("../../login/check.php");
 if(!empty($_POST)):
 include_once("../../class/alumno.php");
 $alumno=new alumno;
+include_once("../../class/cuota.php");
+$cuota=new cuota;
 
 extract($_POST);
 //empieza la copia de archivos
@@ -44,8 +46,9 @@ $valores=array(	"materno"=>"'$materno'",
 				$alumno->insertar($valores);
 				$mensaje[]="SUS DATOS SE GUARDARON CORRECTAMENTE";
 
-
-
+$id=$alumno->last_id();
+$val=array("codalumno"=>$id);
+$cuota->insertar($val);
 $titulo="Mensaje de Respuesta";
 $folder="../../";
 include_once '../../mensajeresultado.php';
