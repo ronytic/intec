@@ -13,6 +13,8 @@ body{
 	background-color: #3b5998;
 	background-color:#FEEA9A;
 	background-color:#d9d9d9;
+    background-image:url(../imagenes/fondo.jpg);
+    background-size:cover;
 }
 #contenedor{
 	background-color: #0f6da4;
@@ -142,7 +144,7 @@ div.usuario{
 	padding:10px;
 }
 .usuariocuerpo{
-	
+	text-align:right;
 	-moz-border-radius: 5px; -webkit-border-radius: 5px; -msie-border-radius: 5px;
 	background-color:#FFF;
 	font:13px/1.5 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
@@ -233,7 +235,7 @@ background: -webkit-linear-gradient(top, #fefefe 0%, #eee9f0 100%);
 background: -o-linear-gradient(top, #fefefe 0%, #eee9f0 100%);
 background: -ms-linear-gradient(top, #fefefe 0%, #eee9f0 100%);
 background: linear-gradient(top, #fefefe 0%, #eee9f0 100%);
-border-bottom: 2px solid #c4151c;
+border-bottom: 2px solid #6fa559;
 width: auto;
 }
 .cuerpo{
@@ -293,7 +295,7 @@ width: auto;
 }
 input[type=text],input.texto,textarea,select,option,input[type=password],input[type=date],input[type=search],input[type=number]{
 	border:#F0F0F0 1px solid;
-	border-bottom:#c4151c 1px solid;
+	border-bottom:#6fa559 1px solid;
 	padding:8px;
 	margin:3px !important;
 	
@@ -303,17 +305,17 @@ input[type=text]:focus,input[type=number]:focus,input.texto:focus,textarea:focus
 	border-right:#4783c4 1px solid;
 	-webkit-box-shadow:0px 0px 5px #4783c4;*/
 	outline:none;
-	border-bottom:#c4151c 1px dashed;
+	border-bottom:#6fa559 1px dashed;
 }
 input[type=submit].enviar,input[type=submit]{
 	margin-top:23px;
 
-	border: 1px solid #c4151c;
+	border: 1px solid #6fa559;
 	color:#FFF;
 	cursor:pointer;
 
 	padding:7px 10px 7px 10px;
-	background-color:#c4151c
+	background-color:#6fa559
 }
 .botonplomo{
 	padding:3px 10px 3px 10px;
@@ -330,7 +332,7 @@ border-radius:3px;
 }
 input[type=submit].enviar:hover,input[type=submit]:hover{
 
-background-color:#c9343a
+background-color:#7ebc64
 }
 input[readonly]{
 	background-color:#EFEFEF;
@@ -338,7 +340,7 @@ input[readonly]{
 	cursor:no-drop	
 }
 h3{
-	color: #c4151c;
+	color: #6fa559;
 	font-size: 20px;
 	margin: 0;
 	padding: 0 0 15px 0;	
@@ -564,7 +566,7 @@ table.tablalistado tr.cabecera td{
 	padding: 5px;
 	color: #FFF;
 	font-weight: bold;
-	background-color: #b6131d;	
+	background-color: #6fa559;	
 }
 table.tablalistado tr.contenido td{
 	padding:5px;
@@ -636,9 +638,3 @@ small{
 	font-size:11px;
 }
 /*Fin de Texto*/
-.rojo{
-    background-color:rgba(237,79,82,1.00) !important;    
-}
-.verde{
-    background-color:rgba(62,159,106,1.00) !important;    
-}

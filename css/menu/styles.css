@@ -18,7 +18,7 @@
   background: -o-linear-gradient(top, #fefefe 0%, #eee9f0 100%);
   background: -ms-linear-gradient(top, #fefefe 0%, #eee9f0 100%);
   background: linear-gradient(top, #fefefe 0%, #eee9f0 100%);
-  border-bottom: 2px solid #c9343a;
+  border-bottom: 2px solid #6fa559;
   width: auto;
 }
 #cssmenu:after,
@@ -66,7 +66,7 @@
   bottom: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-bottom: 10px solid #c9343a;
+  border-bottom: 10px solid #6fa559;
   margin-left: -10px;
 }
 #cssmenu > ul > li:first-child > a {
@@ -128,8 +128,8 @@
   *margin-bottom: -1px;
 }
 #cssmenu .has-sub ul li a {
-  background: #b6131d;
-  border-bottom: 1px dotted #f6e4d6;
+  background: #6fa559;
+  border-bottom: 1px dotted #8cb77a;
   filter: none;
   font-size: 11px;
   display: block;
@@ -138,7 +138,7 @@
   color: #ffffff;
 }
 #cssmenu .has-sub ul li:hover a {
-  background: #c9343a;
+  background: #598447;
 }
 #cssmenu .has-sub .has-sub:hover > ul {
   display: block;
