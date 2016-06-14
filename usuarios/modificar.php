@@ -42,7 +42,7 @@ include_once '../cabecerahtml.php';
                     </tr>
                     <tr>
 						<td><?php campos("Email","email","text",$usu['email'],0,array("size"=>30));?></td>
-						<td><?php campos("Nivel","nivel","select",array("2"=>"Dirección","3"=>"Profesor","4"=>"Secretaria"),"","",$usu['nivel']);?></td>
+						<td><?php campos("Nivel","nivel","select",array("2"=>"Dirección","3"=>"Docente","4"=>"Secretaria"),"","",$usu['nivel']);?></td>
 					</tr>
 					<tr>
 						<td colspan="2"><?php campos("Observación","observacion","textarea",$usu['obs'],"",array("rows"=>5,"cols"=>50,"size"=>30));?></td>

@@ -18,8 +18,8 @@ if (!empty($_POST)) {
         $datos[$i]['usuario']=$d['usuario'];
         switch($d['nivel']){
             case '2':{$Nivel="Dirección";}break;   
-            case '3':{$Nivel="Profesor";}break;   
-            case '4':{$Nivel="Regente";}break;    
+            case '3':{$Nivel="Docente";}break;   
+            case '4':{$Nivel="Secretaria";}break;    
         }
         $datos[$i]['nivel']=$Nivel;
     }

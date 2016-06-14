@@ -13,9 +13,9 @@ $pdf=new PDF("P","mm","letter");
 $pdf->AddPage();
 switch($dato['nivel']){
 case 1:{$nivel="";}break;
-case 2:{$nivel="Administrador";}break;	
-case 3:{$nivel="Inventario";}	break;
-case 4:{$nivel="Ventas";}	break;
+case 2:{$nivel="Dirección";}break;	
+case 3:{$nivel="Docente";}	break;
+case 4:{$nivel="Secretaria";}	break;
 
 }
 mostrarI(array("Usuario"=>$dato['usuario'],
