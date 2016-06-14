@@ -12,13 +12,12 @@ if( $_FILES['foto']['size']<="500000000"){
 	@copy($_FILES['foto']['tmp_name'],"../foto/".$_FILES['foto']['name']);
 }else{
 	//mensaje que no es valido el tipo de archivo	
-	$mensaje[]="Archivo no válido del curriculum. Verifique e intente nuevamente";
+	$mensaje[]="Archivo no válido. Verifique e intente nuevamente";
 }
 
 $valores=array(	"materno"=>"'$materno'",
 				"paterno"=>"'$paterno'",
 				"nombres"=>"'$nombres'",
-				"lugarnac"=>"'$lugarnac'",
 				"fechanac"=>"'$fechanac'",
 				"ci"=>"'$ci'",
 				"sexo"=>"'$sexo'",
@@ -27,23 +26,20 @@ $valores=array(	"materno"=>"'$materno'",
 				"numero"=>"'$numero'",
 				"telefonocasa"=>"'$telefonocasa'",
 				"celular"=>"'$celular'",
-				"codcurso"=>"'$codcurso'",
-				"rude"=>"'$rude'",
-				"observacion"=>"'$observacion'",
+				"codcarrera"=>"'$codcarrera'",
+				"codgrupo"=>"'$codgrupo'",
+				"matricula"=>"'$matricula'",
+                "mensualidad"=>"'$mensualidad'",
 				"foto"=>"'$foto'",
 				
-				"apellidospadre"=>"'$apellidospadre'",
-				"nombrespadre"=>"'$nombrespadre'",
-				"cipadre"=>"'$cipadre'",
+				"dialunes"=>"'$dialunes'",
+				"diamartes"=>"'$diamartes'",
+				"diamiercoles"=>"'$diamiercoles'",
 				
-				"apellidosmadre"=>"'$apellidosmadre'",
-				"nombresmadre"=>"'$nombresmadre'",
-				"cimadre"=>"'$cimadre'",
-				"fotocopiaci"=>"'$fotocopiaci'",
-				"fotocopianacimiento"=>"'$fotocopianacimiento'",
-                "formulariorude"=>"'$formulariorude'",
-                "fotocopiapadre"=>"'$fotocopiapadre'",
-                "compromiso"=>"'$compromiso'",
+				"diajueves"=>"'$diajueves'",
+				"diaviernes"=>"'$diaviernes'",
+				"diasabado"=>"'$diasabado'",
+
 				);
 				$alumno->insertar($valores);
 				$mensaje[]="SUS DATOS SE GUARDARON CORRECTAMENTE";

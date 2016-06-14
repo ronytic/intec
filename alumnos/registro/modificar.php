@@ -7,9 +7,9 @@ include_once '../../class/alumno.php';
 $alumno=new alumno;
 $al=array_shift($alumno->mostrar($id));
 
-include_once("../../class/curso.php");
-$curso=new curso;
-$cur=todolista($curso->mostrarTodo(),"codcurso","nombre","");
+include_once("../../class/carrera.php");
+$carrera=new carrera;
+$cur=todolista($carrera->mostrarTodo(),"codcarrera","nombre","");
 
 $foto="../foto/".$al['foto'];
 if(!file_exists($foto) && $al['foto']!=""){
@@ -18,6 +18,17 @@ if(!file_exists($foto) && $al['foto']!=""){
 include_once '../../funciones/funciones.php';
 include_once '../../cabecerahtml.php';
 ?>
+<script language="javascript">
+$(document).on("ready",function(){
+    $("#codcarrera").change(actualizar);
+    actualizar();
+    function actualizar() {
+        $.post("grupo.php",{"codcarrera":($("#codcarrera").val())},function(data){
+            $("#codgrupo").html(data);
+        })
+    }
+})
+</script>
 <?php include_once '../../cabecera.php';?>
 <div class="grid_12">
 	<div class="contenido imagenfondo">
@@ -29,14 +40,11 @@ include_once '../../cabecerahtml.php';
                 
 				<table class="tablareg">
                 	<tr>
-                    	<td><?php campos("Apellido Paterno","paterno","text",$al['paterno'],0,array("required"=>"required"));?></td>
-						<td><?php campos("Apellido Materno","materno","text",$al['materno'],1,array("required"=>"required"));?></td>
+                    	<td><?php campos("Apellido Paterno","paterno","text",$al['paterno'],1,array("required"=>"required"));?></td>
+						<td><?php campos("Apellido Materno","materno","text",$al['materno'],0,array("required"=>"required"));?></td>
 					</tr>
                     <tr>
 						<td><?php campos("Nombres","nombres","text",$al['nombres'],0,array("required"=>"required"));?></td>
-					</tr>
-                    <tr>
-						<td><?php campos("Lugar de Nacimiento","lugarnac","text",$al['lugarnac'],0,array("required"=>"required"));?></td>
 						<td><?php campos("Fecha Nacimiento","fechanac","date",$al['fechanac'],0,array("required"=>"required"));?></td>
 					</tr>
                     <tr>
@@ -54,59 +62,50 @@ include_once '../../cabecerahtml.php';
 						<td><?php campos("Teléfono Casa","telefonocasa","text",$al['telefonocasa'],0,array("required"=>"required"));?></td>
 						<td><?php campos("Celular","celular","text",$al['celular'],0,array("required"=>"required"));?></td>
 					</tr>
+				</table>
+			</fieldset>
+		</div>
+        <div class="prefix_0 grid_5">
+			<fieldset>
+				<div class="titulo">Datos Secundarios</div>
+                <table class="tablareg">
                     <tr>
-						<td><?php campos("Curso","codcurso","select",$cur,0,"",$al['codcurso']);?></td>
-						<td><?php campos("Rude","rude","text",$al['rude'],0,array("required"=>"required"));?></td>
+						<td colspan="2"><?php campos("Carrera","codcarrera","select",$cur,"","",$al['codcarrera']);?></td>
+						
 					</tr>
                     <tr>
-						<td colspan="2"><?php campos("Observación","observacion","textarea",$al['observacion']);?></td>
-					</tr>
+                    <td colspan="2"><?php campos("Grupo","codgrupo","select","");?></td>
+                    </tr>
+                	<tr>
+                    	<td><?php campos("Matricula","matricula","text",$al['matricula']);?></td>
+                        <td><?php campos("Mensualidad","mensualidad","text",$al['mensualidad']);?></td>
+                    </tr>
+                     
                     <tr>
-						<td colspan="2"><?php campos("Foto","foto","file","",0,array());?>
+						<td colspan="2"><?php campos("Foto","foto","file","",0,array(""=>""));?>
+                        <?php if($al['foto']!=""){?>
                         <hr class="separador">
                         <a href="<?php echo $foto?>" target="_blank">
                             <img src="<?php echo $foto?>" width="100" height="100">
                             <br>
                             Abrir en otra Ventana
                         </a>
+                        <?php }?>
                         </td>
 					</tr>
-					
-				</table>
-			</fieldset>
-		</div>
-        <div class="prefix_0 grid_5">
-			<fieldset>
-				<div class="titulo">Datos de Padre de Familia</div>
-                <table class="tablareg">
-                	<tr>
-                    	<td><?php campos("Apellidos Padre","apellidospadre","text",$al['apellidospadre']);?></td>
-                        <td><?php campos("Nombres Padre","nombrespadre","text",$al['nombrespadre']);?></td>
-                    </tr>
-                    <tr>
-                    	<td><?php campos("C.I. Padre","cipadre","text",$al['cipadre']);?></td>
-                        
-                    </tr>
-                    <tr>
-                    	<td><?php campos("Apellidos Madre","apellidosmadre","text",$al['apellidosmadre']);?></td>
-                        <td><?php campos("Nombres Madre","nombresmadre","text",$al['nombresmadre']);?></td>
-                    </tr>
-                    <tr>
-                    	<td><?php campos("C.I. Madre","cimadre","text",$al['cimadre']);?></td>
-                        
-                    </tr>
                     
                 </table>
         	</fieldset>
             <fieldset>
-            <div class="titulo">Datos de Padre de Familia</div>
+            <div class="titulo">Dias de Clases</div>
                  <table class="tablareg">
                 	<tr>
-                    	<td><?php campos("Fotocopia de CI","fotocopiaci","checkbox","1",0,$al['fotocopiaci']?array("checked"=>"checked"):"");?></td>
-                        <td><?php campos("Fotocopia Cert.Nac.","fotocopianacimiento","checkbox","1",0,$al['fotocopianacimiento']?array("checked"=>"checked"):"");?></td>
-                        <td><?php campos("Formulario Rude","formulariorude","checkbox","1",0,$al['formulariorude']?array("checked"=>"checked"):"");?></td>
-                        <td><?php campos("Fotocopia CI Padre/Tutor","fotocopiapadre","checkbox","1",0,$al['fotocopiapadre']?array("checked"=>"checked"):"");?></td>
-                        <td><?php campos("Compromiso","compromiso","checkbox","1",0,$al['compromiso']?array("checked"=>"checked"):"");?></td>
+                    	<td><?php campos("Lunes","dialunes","checkbox","1",0,$al['dialunes']?array("checked"=>"checked"):"");?></td>
+                        <td><?php campos("Martes","diamartes","checkbox","1",0,$al['diamartes']?array("checked"=>"checked"):"");?></td>
+                        <td><?php campos("Miercoles","diamiercoles","checkbox","1",0,$al['diamiercoles']?array("checked"=>"checked"):"");?></td>
+                        <td><?php campos("Jueves","diajueves","checkbox","1",0,$al['diajueves']?array("checked"=>"checked"):"");?></td>
+                        <td><?php campos("Viernes","diaviernes","checkbox","1",0,$al['diaviernes']?array("checked"=>"checked"):"");?></td>
+                        <td><?php campos("Sábado","diasabado","checkbox","1",0,$al['diasabado']?array("checked"=>"checked"):"");?></td>
                     </tr>
                     <tr><td colspan="5"><?php campos("Guardar","guardar","submit");?></td></tr>
                 </table>
