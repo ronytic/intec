@@ -5,7 +5,7 @@ $folder="../../";
 
 include_once("../../class/carrera.php");
 $carrera=new carrera;
-$cur=todolista($carrera->mostrarTodo(),"codcarrera","nombre","");
+$cur=todolista($carrera->mostrarTodo("","nombre"),"codcarrera","nombre","");
 
 
 include_once("../../funciones/funciones.php");
@@ -36,7 +36,7 @@ $(document).on("ready",function(){
                     </tr>
                     <tr>
                         
-                        <td colspan="2"><?php campos("Grupo","codgrupo","select",$cur);?></td>
+                        <td colspan="2"><?php campos("Grupo","codgrupo","select","");?></td>
                         <td><?php campos("Sexo","sexo","select",array("0"=>"Femenino","1"=>"Masculino","%"=>"Todos"),0,"","%");?></td>
                         <td><?php campos("Buscar","enviar","submit","",0,array("size"=>15));?></td>
                     </tr>
