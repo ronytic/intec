@@ -2,34 +2,37 @@
 include_once("../../login/check.php");
 if(!empty($_POST)):
 
-extract($_POST);
-include_once("../../class/docentemateriacurso.php");
+include_once("../../class/grupo.php");
 include_once("../../class/alumno.php");
 include_once("../../class/notas.php");
-$docentemateriacurso=new docentemateriacurso;
+$grupo=new grupo;
 $alumno=new alumno;
 $notas=new notas;
-$codcurso=$_POST['codcurso'];
+$codgrupo=$_POST['codgrupo'];
+$codcarrera=$_POST['codcarrera'];
 //echo "<pre>";print_r($_POST);echo "</pre>";
+//exit();
 //$notas->vaciar();
-$docmatcur=$docentemateriacurso->mostrarTodo("codcurso=".$codcurso);
-foreach($docmatcur as $dmc){
-    $notas->updateRow(array("activo"=>0),"coddocentemateriacurso=".$dmc['coddocentemateriacurso']);
-	foreach($alumno->mostrarTodo("codcurso=".$dmc['codcurso']) as $al){
-			$valores=array(	"coddocentemateriacurso"=>"'".$dmc['coddocentemateriacurso']."'",
-							"codalumno"=>"'".$al['codalumno']."'",
-							"bimestre1"=>"0",
-                            "bimestre2"=>"0",
-                            "bimestre3"=>"0",
-                            "bimestre4"=>"0",
-							"notafinal"=>"'0'",
-							);
-							/*echo "<pre>";	
-							print_r($valores);
-							echo "</pre>";*/
-			$notas->insertar($valores);
-	}
+
+foreach($alumno->mostrarTodo("codgrupo=".$codgrupo) as $al){
+        $valores=array(	"codgrupo"=>"'".$codgrupo."'",
+                        "codcarrera"=>"'".$codcarrera."'",
+                        "codalumno"=>"'".$al['codalumno']."'",
+                        "asistencia"=>"0",
+                        "practica"=>"0",
+                        "investigacion"=>"0",
+                        "controllectura"=>"0",
+                        "evaluacion"=>"'0'",
+                        "nota"=>"'0'",
+                        "turno2"=>"'0'",
+                        "notafinal"=>"'0'",
+                        );
+                        /*echo "<pre>";	
+                        print_r($valores);
+                        echo "</pre>";*/
+        $notas->insertar($valores);
 }
+
 
 $mensaje[]="SUS DATOS SE GUARDARON CORRECTAMENTE";
 $textonuevo="Habilitar Nuevo Curso";
