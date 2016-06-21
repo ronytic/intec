@@ -50,7 +50,6 @@ $(document).on("ready",function(){
 						<td><div class="rojoC">
                         <ul>
                             <li><strong>REVISE MUY BIEN LA LISTA DE DOCENTE ASIGNADOS ANTES DE HABILTIAR LAS NOTAS POR GRUPO</strong></li>
-                            <li><strong>SELECCIONE UN CURSO PARA QUE SEA GENERADO EL REGISTRO DE NOTAS PARA LOS 4 BIMESTRES.</strong></li>
                             <li><strong>TENGA EN CUENTA QUE SE SI YA SE GENERÓ CON ANTERIORIDAD SERAN REEMPLAZADOS Y ESTARAN SIN REGISTROS</strong></li>
                         </ul>
                          </div></td>
