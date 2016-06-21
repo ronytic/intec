@@ -7,12 +7,15 @@ extract($_POST);
 /*echo "<pre>";
 print_r($n);
 echo "</pre>";*/
-    
+  //exit();  
 foreach($n as $no){
-	$valores=array(	"bimestre1"=>"'".$no['bimestre1']."'",
-				"bimestre2"=>"'".$no['bimestre2']."'",
-                "bimestre3"=>"'".$no['bimestre3']."'",
-                "bimestre4"=>"'".$no['bimestre4']."'",
+	$valores=array(	"asistencia"=>"'".$no['asistencia']."'",
+				"practica"=>"'".$no['practica']."'",
+                "investigacion"=>"'".$no['investigacion']."'",
+                "controllectura"=>"'".$no['controllectura']."'",
+                "evaluacion"=>"'".$no['evaluacion']."'",
+                "nota"=>"'".$no['nota']."'",
+                "turno2"=>"'".$no['turno2']."'",
 				"notafinal"=>"'".$no['notafinal']."'",
 				);	
 	/*echo "<pre>";
@@ -21,7 +24,7 @@ foreach($n as $no){
 	
 	$notas->actualizar($valores,$no['codnotas']);
 }
-
+//exit();
 $mensaje[]="SUS NOTAS SE GUARDARON CORRECTAMENTE";
 
 
