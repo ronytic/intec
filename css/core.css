@@ -638,3 +638,6 @@ small{
 	font-size:11px;
 }
 /*Fin de Texto*/
+.rojo{
+    background-color:rgba(255,117,119,1.00) !important;    
+}
