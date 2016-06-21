@@ -16,7 +16,7 @@ foreach($n as $d){
                     "codgrupo"=>"'".$codgrupo."'",
 					"fechaasistencia"=>"'".$fechaasistencia."'",
 	);	
-	//$asistencia->insertar($valores);
+	$asistencia->insertar($valores);
 }
 				$mensaje[]="SUS DATOS SE GUARDARON CORRECTAMENTE";
 
