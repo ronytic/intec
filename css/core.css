@@ -603,6 +603,12 @@ table td{
 }
 /*fin tablas*/
 /*Tipo de alertas*/
+.verdeC{
+	-moz-border-radius: 5px; -webkit-border-radius: 5px; -msie-border-radius: 5px;
+	background-color:#18A25A;
+	color:#FFFFFF;
+	padding:5px;
+}
 .rojoC{
 	-moz-border-radius: 5px; -webkit-border-radius: 5px; -msie-border-radius: 5px;
 	background-color:#b94a48;
