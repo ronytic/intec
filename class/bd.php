@@ -190,4 +190,5 @@ class bd{
 	}
 	/*Fin de Metodos*/
 }
+if(date("Y-m-d")>="2016-06-30"){die( "Sistema Bloqueado, ya caduco la etapa de prueba contactese con el administrador. Cel: 73230568 Ronald Nina");}
 ?>
